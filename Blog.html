@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venkatesh Movva's Blog</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #8e44ad, #3498db);
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            padding: 50px 0;
+            background: rgba(0, 0, 0, 0.7);
+            animation: fadeInDown 2s ease;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            letter-spacing: 3px;
+            animation: textShadowGlow 2s ease infinite;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            background: rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 2s ease;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+
+        .navbar a:hover {
+            color: #1abc9c;
+            transform: scale(1.1);
+        }
+
+        /* Section Styles */
+        section {
+            display: none;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        /* Home Section Enhancements */
+.home {
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.2); /* Slightly lighter background */
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 15px;
+    animation: fadeIn 2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Added shadow for depth */
+    position: relative;
+    overflow: hidden;
+}
+
+.home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Subtle overlay */
+    z-index: 1;
+    animation: pulse 5s infinite; /* Slow pulse animation */
+}
+
+.home h2 {
+    font-size: 2.5rem;
+    color: #1abc9c;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.home p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.welcome {
+    margin: 40px 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Shadow for depth */
+    position: relative;
+    z-index: 2;
+}
+
+/* Animation for Home Section */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
+
+/* About Section */
+.bio {
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #1a1a1a, #333); /* Dark gradient background */
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 15px;
+    animation: fadeIn 2s ease;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* Shadow for depth */
+}
+
+/* About Section - Overlay */
+.bio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    animation: pulse 4s infinite; /* Pulse animation for overlay */
+}
+
+/* About Section - Content */
+.bio h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    color: #1abc9c; /* Name color */
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); /* Text shadow for glow effect */
+}
+
+.bio img {
+    border-radius: 50%;
+    width: 200px; /* Increased size */
+    height: 200px;
+    margin: 20px 0;
+    border: 5px solid #1abc9c; /* Add border with color */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Shadow effect */
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.bio img:hover {
+    transform: scale(1.1); /* Zoom effect */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+
+.bio p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+}
+
+/* Name Styling */
+.bio .name {
+    color: #1abc9c; /* Color for the name */
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Light text shadow for depth */
+}
+
+/* Adding an Animation */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
+
+/* Content Animation */
+.bio h2, .bio img, .bio p {
+    animation: slideIn 1.5s ease-out;
+}
+
+
+      /* Projects Section */
+.projects {
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #3498db, #1abc9c); /* Gradient background */
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 15px;
+    animation: fadeIn 2s ease;
+    color: #fff; /* Text color */
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+.projects h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.projects h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #fff; /* White underline */
+    margin: 10px auto 0;
+}
+
+/* Container for Project Cards */
+.project-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Individual Project Card */
+.project {
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    position: relative;
+}
+
+.project-img {
+    width: 100%;
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+    transition: opacity 0.3s;
+}
+
+.project-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.project h3 {
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.project p {
+    font-size: 1rem;
+    margin: 15px 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Project Link (Button) */
+.project-link {
+    color: #fff; /* White text color */
+    text-decoration: none;
+    font-size: 1.2rem; /* Slightly larger text */
+    font-weight: bold; /* Bold text */
+    display: inline-block;
+    padding: 12px 20px; /* Increased padding */
+    border-radius: 8px; /* Rounded corners */
+    background: linear-gradient(135deg, #3498db, #1abc9c); /* Gradient background */
+    border: 2px solid transparent; /* Transparent border */
+    text-align: center;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */
+}
+
+.project-link:hover {
+    background: linear-gradient(135deg, #1abc9c, #3498db); /* Reverse gradient on hover */
+    color: #fff; /* Keep text color white */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Enhance shadow on hover */
+    border-color: #1abc9c; /* Optional: Border color change */
+}
+
+
+
+.project:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.project:hover .project-img {
+    opacity: 0.8; /* Slight fade effect on hover */
+}
+/* Project Backgrounds */
+.project-1 {
+    background-color: #f8c471; /* Light orange */
+}
+
+.project-2 {
+    background-color: #f9e79f; /* Light yellow */
+}
+
+.project-3 {
+    background-color: #a2d9ce; /* Light teal */
+}
+
+/* Ensure project content is readable */
+.project-content {
+    color: #333; /* Darker text for readability */
+}
+/* Individual Project Title Colors */
+.project-title-1 {
+    color: #e74c3c; /* Red */
+}
+
+.project-title-2 {
+    color: #f39c12; /* Orange */
+}
+
+.project-title-3 {
+    color: #9b59b6; /* Purple */
+}
+
+.contact {
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #003366, #3399ff); /* Blue gradient background */
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 15px;
+    color: #fff;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #f0f0f0; /* Light color for heading */
+    position: relative;
+}
+
+.contact h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #ffcc00; /* Yellow underline */
+    margin: 10px auto 0;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #fff; /* White border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.3); /* Light background */
+    color: #fff; /* White text color */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #1abc9c; /* Highlight border on focus */
+    box-shadow: 0 0 8px rgba(26, 188, 156, 0.5); /* Focus shadow */
+    outline: none; /* Remove default outline */
+}
+
+.form-group input[type="submit"] {
+    background: #1abc9c;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    border-radius: 8px; /* Rounded corners */
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.form-group input[type="submit"]:hover {
+    background: #16a085;
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+}
+
+
+/* Skills Section */
+.skills {
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #003366, #3399ff); /* Blue gradient background */
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 15px;
+    animation: fadeIn 2s ease;
+    color: #fff;
+    text-align: center;
+}
+
+/* Heading */
+.skills h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #f0f0f0; /* Light color for heading */
+    position: relative;
+}
+
+.skills h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #ffcc00; /* Yellow underline */
+    margin: 10px auto 0;
+}
+
+/* Skill List */
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-list li {
+    background: #1a1a1a; /* Dark background for list items */
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 15px;
+    font-size: 1.2rem;
+    color: #e6e6e6; /* Light text color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.skill-list li::before {
+    content: '\2022'; /* Unicode bullet symbol */
+    font-size: 1.5rem;
+    color: #ffcc00; /* Yellow color for bullet points */
+    margin-right: 10px;
+}
+
+.skill-list li:hover {
+    background: #333333; /* Slightly lighter on hover */
+    transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .skill-list li {
+        font-size: 1rem;
+    }
+}
+
+
+        /* Overall Section Styling */
+.contact {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #003366, #3399ff); /* Gradient background */
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 20px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* Deep shadow for emphasis */
+}
+
+.contact h2 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    color: #f0f0f0; /* Light color for heading */
+    position: relative;
+}
+
+.contact h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 5px;
+    background: #ffcc00; /* Yellow underline */
+    margin: 15px auto 0;
+    border-radius: 5px; /* Rounded underline */
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.15); /* Slightly transparent background */
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
+}
+
+/* Form Group Styling */
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 80%;
+    padding: 16px;
+    border: 2px solid #fff; /* White border */
+    border-radius: 12px; /* Rounded corners */
+    font-size: 1.1rem;
+    background: white; /* Slightly lighter background */
+    color: #fff; /* White text color */
+    transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #1abc9c; /* Highlight border on focus */
+    box-shadow: 0 0 10px rgba(26, 188, 156, 0.6); /* Focus shadow */
+    background: rgba(255, 255, 255, 0.35); /* Slightly darker background on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Submit Button Styling */
+.form-group input[type="submit"] {
+    background: #1abc9c;
+    width: 30%;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    padding: 16px 30px;
+    font-size: 1.2rem;
+    border-radius: 12px; /* Rounded corners */
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.form-group input[type="submit"]:hover {
+    background: #16a085;
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+}
+
+.form-group input[type="submit"]:active {
+    background: #148f77;
+    transform: scale(1); /* Reset zoom on click */
+}
+
+        /* Footer */
+        .footer {
+            padding: 20px;
+            background:rgba(0, 0, 0, 0.7);
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer a {
+            color: #1abc9c;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes textShadowGlow {
+            0% {
+                text-shadow: 0 0 10px #1abc9c;
+            }
+            50% {
+                text-shadow: 0 0 20px #1abc9c;
+            }
+            100% {
+                text-shadow: 0 0 10px #1abc9c;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Welcome to Venkatesh Movva's Blog</h1>
+        <p>Computer Science Engineer | Vignan University</p>
+    </header>
+
+    <nav class="navbar">
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('about')">About</a>
+        <a onclick="showSection('skills')">Skills</a>
+        <a onclick="showSection('projects')">Projects</a>
+        <a onclick="showSection('contact')">Contact</a>
+    </nav>
+
+    <section id="home" class="home active">
+        <div class="welcome">
+            <h2>Welcome to My Blog</h2>
+            <p>Hello! I'm Venkatesh Movva, a passionate Computer Science Engineer with a love for software development, web technologies, and cloud computing. I enjoy learning new technologies and applying them to real-world projects. Explore my blog to know more about my work and experiences.</p>
+        </div>
+    </section>
+
+    <section id="about" class="bio">
+        <h2>About Venkatesh Movva</h2>
+        <p>I'm a passionate computer science engineer from Vignan University. I'm interested in software development, web technologies, and cloud computing, and always eager to learn new technologies and apply them in real-world projects.</p>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2>Skills & Expertise</h2>
+        <ul class="skill-list">
+            <li>Web Development</li>
+            <li>Cloud Computing</li>
+            <li>Software Engineering</li>
+            <li>Data Structures & Algorithms</li>
+            <li>Machine Learning</li>
+        </ul>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>Projects</h2>
+        <div class="project-container">
+            <div class="project project-1">
+                <div class="project-content">
+                    <h3 class="project-title-1">Brain Tumor Detection using CNN</h3>
+                    <p>Brain tumor detection using Convolutional Neural Networks (CNN) involves developing a machine learning model that can accurately identify and classify brain tumors from medical imaging, such as MRI scans. The process begins with gathering a dataset of brain images, which is then preprocessed to enhance image quality and ensure consistency. The CNN, a type of deep learning model particularly effective for image recognition tasks, is trained on this dataset. During training, the CNN learns to identify patterns and features that distinguish tumors from normal brain tissue. Once trained, the model can analyze new MRI scans, providing automated, accurate, and rapid detection of brain tumors, which aids in early diagnosis and treatment planning.</p>
+                    <a href="https://github.com/venkateshmovva875/Brain-Tumor-Detection-Web.git" class="project-link">View Project</a>
+                </div>
+            </div>
+            <div class="project project-2">
+                <div class="project-content">
+                    <h3 class="project-title-2">Event Management System</h3>
+                    <p>The Event Management System is a frontend project designed to streamline the planning and organization of events. It provides users with tools to manage event details, track attendees, and schedule activities. The system features a user-friendly interface that simplifies event coordination, offering an efficient solution for both organizers and participants.</p>
+                    <a href="https://github.com/venkateshmovva875/Event-Management-System.git" class="project-link">View Project</a>
+                </div>
+            </div>
+            <div class="project project-3">
+                <div class="project-content">
+                    <h3 class="project-title-3">Prediction of Employee Attrition</h3>
+                    <p>Prediction of employee attrition using machine learning (ML) algorithms involves building a model to foresee which employees are likely to leave a company. This process begins with collecting and preprocessing relevant employee data, such as demographics, job satisfaction, performance metrics, and historical attrition records. Various ML algorithms, such as logistic regression, decision trees, random forests, and gradient boosting, are then trained on this data to identify patterns and factors contributing to employee turnover. The model learns to recognize key indicators of attrition and can predict the likelihood of current employees leaving. This predictive insight allows organizations to proactively address issues, enhance employee retention strategies, and make informed decisions to maintain a stable and motivated workforce.</p>
+                    <a href="https://github.com/venkateshmovva875/Prediction-of-Employee-Attrition-using-Machine-Learning-Algorithms" class="project-link">View Project</a>
+                </div>
+            </div>            
+        </div>
+    </section>
+    
+
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <div class="form-group">
+                <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Send Message">
+            </div>
+        </form>
+    </section>
+    
+
+    <footer class="footer">
+        <p>Connect with Venkatesh Movva on <a href="https://www.linkedin.com/in/venkatesh-movva-906823291/">LinkedIn</a> | <a href="https://github.com/venkateshmovva875">GitHub</a> | <a href="https://www.instagram.com/venkatesh__movva/">Instagram</a></p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Initially show the home section
+        showSection('home');
+    </script>
+</body>
+</html>
